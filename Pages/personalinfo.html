@@ -9,8 +9,56 @@
 </head>
 <body>
     <main>
-        <div>grid 1</div>
-        <div>grid 2</div>
+        <div class="leftWrapper">
+            <div class="leftHeader">
+                <a href="../index.html"><div class="imageBorder"><img style="margin-top: 11px; margin-left: 13px;" src="../Images/Vector.svg" alt="arrowToLeft"></div></a>
+                <div>
+                    <div class="personalInfo">
+                        <div style="font-size: 24px">პირადი ინფო</div>
+                        <div style="font-size: 20px">1/3</div>
+                    </div>
+                    <div class="underLine"></div>
+                </div>
+            </div>
+            <div class="leftContent">
+                <div class="namePart">
+                    <div class="nameDiv">
+                        <span>სახელი</span>
+                        <input type="text" placeholder="სახელი">
+                        <span class="nameValidation">მინიმუმ 2 ასო, ქართული ასოები</span>
+                    </div>
+                    <div class="lastnameDiv">
+                        <span>გვარი</span>
+                        <input type="text" placeholder="გვარი">
+                        <span class="nameValidation">მინიმუმ 2 ასო, ქართული ასოები</span>
+                    </div>
+                </div>
+                <div class="uploadPart">
+                    <span>პირადი ფოტოს ატვირთვა</span>
+                    <div class="uploadButton">ატვირთვა</div>
+                </div>
+                <div class="aboutMePart">
+                    <span>ჩემს შესახებ (არასავალდებულო)</span>
+                    <textarea name="aboutMe" id="aboutMe" cols="30" rows="10" placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
+                </div>
+                <div class="mailPart">
+                    <span>ელ.ფოსტა</span>
+                    <input type="text" placeholder="ელ.ფოსტა">
+                    <span class="nameValidation">უნდა მთავრდებოდეს @redberry.ge-ით</span>
+                </div>
+                <div class="mobilePart">
+                    <span>მობილურის ნომერი</span>
+                    <input type="text" placeholder="+995 5** ** ** **">
+                    <span class="nameValidation">უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</span>
+                </div>
+                <div class="bottomButton">
+                    <button id="nextPage">შემდეგი</button>
+                </div>
+            </div>
+        </div>
+        <form>
+            <div class="footer"><img src="../Images/LOGO-12 1.svg"></div>
+        </form>
     </main>
 </body>
 </html>
