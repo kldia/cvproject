@@ -23,13 +23,19 @@
             <div class="leftContent">
                 <div class="namePart">
                     <div class="nameDiv">
-                        <span>სახელი</span>
-                        <input type="text" placeholder="სახელი">
+                        <label>სახელი</label>
+                        <div style="position: relative;">
+                            <input id="nameinput" type="text" placeholder="სახელი" onKeyUp="nameInputChange(event)" />
+                            <img src="../Images/pwichka.svg" id="nameDoneLogo" class="doneLogo" alt="DoneLogo">
+                        </div>
                         <span class="nameValidation">მინიმუმ 2 ასო, ქართული ასოები</span>
                     </div>
                     <div class="lastnameDiv">
-                        <span>გვარი</span>
-                        <input type="text" placeholder="გვარი">
+                        <label>გვარი</label>
+                        <div style="position: relative;">
+                            <input id="lastnameinput" type="text" placeholder="გვარი" onKeyUp="lastnameInputChange(event)">
+                            <img src="../Images/pwichka.svg" id="lastnameDoneLogo" class="doneLogo" alt="DoneLogo">
+                        </div>
                         <span class="nameValidation">მინიმუმ 2 ასო, ქართული ასოები</span>
                     </div>
                 </div>
@@ -39,16 +45,22 @@
                 </div>
                 <div class="aboutMePart">
                     <span>ჩემს შესახებ (არასავალდებულო)</span>
-                    <textarea name="aboutMe" id="aboutMe" cols="30" rows="10" placeholder="ზოგადი ინფო შენ შესახებ"></textarea>
+                    <textarea name="aboutMe" id="aboutMe" cols="30" rows="10" placeholder="ზოგადი ინფო შენ შესახებ" onKeyUp="aboutmeChange(event)"></textarea>
                 </div>
                 <div class="mailPart">
                     <span>ელ.ფოსტა</span>
-                    <input type="text" placeholder="ელ.ფოსტა">
+                    <div style="position: relative;">
+                        <input id="mailinput" type="text" placeholder="ელ.ფოსტა" onKeyUp="mailChange(event)">
+                        <img src="../Images/pwichka.svg" id="mailDoneLogo" class="doneLogo" alt="DoneLogo">
+                    </div>
                     <span class="nameValidation">უნდა მთავრდებოდეს @redberry.ge-ით</span>
                 </div>
                 <div class="mobilePart">
                     <span>მობილურის ნომერი</span>
-                    <input type="text" placeholder="+995 5** ** ** **">
+                    <div style="position: relative;">
+                        <input id="mobileinput" type="text" placeholder="+995 5** ** ** **" onKeyUp="mobileChange(event)">
+                        <img src="../Images/pwichka.svg" id="mobileDoneLogo" class="doneLogo" alt="DoneLogo">
+                    </div>
                     <span class="nameValidation">უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</span>
                 </div>
                 <div class="bottomButton">
@@ -57,8 +69,84 @@
             </div>
         </div>
         <form>
-            <div class="footer"><img src="../Images/LOGO-12 1.svg"></div>
+            <!-- <div class="footer"><img src="../Images/LOGO-12 1.svg"></div> -->
         </form>
     </main>
 </body>
+<script>
+
+    const langdic = { 
+        "Georgian" : /[\u10A0-\u10FF]/,
+        "english" : /^[a-zA-Z]+$/
+    }
+    const keys = Object.entries(langdic);
+
+    function nameInputChange(e) {
+        var x = document.getElementById("nameinput");
+        var text = document.getElementById("nameinput").value.replace(/\s/g);
+
+        Object.entries(langdic).forEach(([key, value]) => {
+            if (value.test(text) == true){
+                if(x.value.length > 1 && key == 'Georgian'){
+                    console.log('SAXELII');
+                    x.style.border = "1px solid #98E37E";
+                    document.getElementById('nameDoneLogo').style.display = "block";
+                }else{
+                    x.style.border = "1px solid #EF5050";
+                    document.getElementById('nameDoneLogo').style.display = "none";
+                }
+            }
+        });
+    }
+
+    function lastnameInputChange(e) {
+        var x = document.getElementById("lastnameinput");
+        var text = document.getElementById("lastnameinput").value.replace(/\s/g);
+
+        Object.entries(langdic).forEach(([key, value]) => {
+            if (value.test(text) == true){
+                if(x.value.length > 1 && key == 'Georgian'){
+                    console.log('GVARII');
+                    x.style.border = "1px solid #98E37E";
+                    document.getElementById('lastnameDoneLogo').style.display = "block";
+                }else{
+                    x.style.border = "1px solid #EF5050";
+                    document.getElementById('lastnameDoneLogo').style.display = "none";
+                }
+             }
+        });
+    }
+
+    function aboutmeChange(e) {
+        document.getElementById("aboutMe").style.border = "1px solid #98E37E";
+    }
+
+    function mailChange(e) {
+        var x = document.getElementById("mailinput");
+        var text = document.getElementById("mailinput").value.replace(/\s/g);
+
+        if(text.includes('@redberry.ge')){
+            x.style.border = "1px solid #98E37E";
+            document.getElementById('mailDoneLogo').style.display = "block";
+            document.getElementById('mailDoneLogo').style.left = "36%";
+        }else{
+            x.style.border = "1px solid #EF5050";
+            document.getElementById('mailDoneLogo').style.display = "none";
+        }
+    }
+
+    function mobileChange(e) {
+        var x = document.getElementById("mobileinput");
+        var text = document.getElementById("mobileinput").value.replace(/\s/g);
+        console.log(text ,' -', text.startsWith('+995'),'-', text.length);
+        if(text.startsWith('+995') && text.length === 13){
+            x.style.border = "1px solid #98E37E";
+            document.getElementById('mobileDoneLogo').style.display = "block";
+            document.getElementById('mobileDoneLogo').style.left = "36%";
+        }else{
+            x.style.border = "1px solid #EF5050";
+            document.getElementById('mobileDoneLogo').style.display = "none";
+        }
+    }
+</script>
 </html>
