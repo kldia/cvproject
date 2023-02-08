@@ -83,7 +83,7 @@
 
     function nameInputChange(e) {
         var x = document.getElementById("nameinput");
-        var text = document.getElementById("nameinput").value.replace(/\s/g);
+        var text = document.getElementById("nameinput").value.replace(/\s/g, '');
 
         Object.entries(langdic).forEach(([key, value]) => {
             if (value.test(text) == true){
@@ -101,7 +101,7 @@
 
     function lastnameInputChange(e) {
         var x = document.getElementById("lastnameinput");
-        var text = document.getElementById("lastnameinput").value.replace(/\s/g);
+        var text = document.getElementById("lastnameinput").value.replace(/\s/g, '');
 
         Object.entries(langdic).forEach(([key, value]) => {
             if (value.test(text) == true){
@@ -123,7 +123,7 @@
 
     function mailChange(e) {
         var x = document.getElementById("mailinput");
-        var text = document.getElementById("mailinput").value.replace(/\s/g);
+        var text = document.getElementById("mailinput").value.replace(/\s/g, '');
 
         if(text.includes('@redberry.ge')){
             x.style.border = "1px solid #98E37E";
@@ -137,7 +137,7 @@
 
     function mobileChange(e) {
         var x = document.getElementById("mobileinput");
-        var text = document.getElementById("mobileinput").value.replace(/\s/g);
+        var text = document.getElementById("mobileinput").value.replace(/\s/g, '');
         console.log(text ,' -', text.startsWith('+995'),'-', text.length);
         if(text.startsWith('+995') && text.length === 13){
             x.style.border = "1px solid #98E37E";
